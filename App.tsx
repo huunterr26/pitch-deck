@@ -1,9 +1,12 @@
 import React from 'react';
 import Deck from './components/Deck';
+import { ThemeProvider } from './components/ThemeContext';
 
 const App: React.FC = () => {
   return (
-    <Deck />
+    <ThemeProvider cycleDuration={4000}>
+      <Deck />
+    </ThemeProvider>
   );
 };
 

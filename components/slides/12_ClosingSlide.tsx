@@ -46,7 +46,7 @@ const ClosingSlide: React.FC<{ slideNum?: number; total?: number }> = () => {
               </div>
               <div className="flex items-center gap-3 text-slate-300 hover:text-brand-purple transition-colors cursor-pointer text-sm font-mono">
                 <Globe size={16} className="text-brand-purple" />
-                <span>Ghost-OS-X.ai</span>
+                <span>GHOST-OS-X.AI</span>
               </div>
             </div>
           </div>

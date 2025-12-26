@@ -48,7 +48,7 @@ const TitleSlide: React.FC<{ slideNum?: number; total?: number }> = () => {
             <div className="absolute inset-0 overflow-hidden rounded-[40px] opacity-30 mix-blend-screen group-hover:opacity-50 transition-opacity duration-1000 z-0">
               <img
                 src="/grok_image_xh5i3en.jpg"
-                alt="Ghost Intelligence"
+                alt="GHOST Intelligence"
                 className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[2000ms]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/80"></div>
@@ -56,9 +56,7 @@ const TitleSlide: React.FC<{ slideNum?: number; total?: number }> = () => {
 
             <div className="absolute -inset-4 bg-gradient-to-r from-brand-accent to-brand-purple rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500 z-0"></div>
 
-            <div className="bg-black/40 backdrop-blur-2xl border border-white/10 p-12 md:p-16 rounded-3xl shadow-2xl relative z-10 w-72 h-72 md:w-96 md:h-96 flex items-center justify-center overflow-hidden">
-              <AnimatedLogo className="w-full h-full scale-110 relative z-10" />
-            </div>
+            <div className="bg-black/40 backdrop-blur-2xl border border-white/10 p-12 md:p-16 rounded-3xl shadow-2xl relative z-10 w-72 h-72 md:w-96 md:h-96 flex items-center justify-center overflow-hidden" />
 
             {/* Floating Detail Elements */}
             <div className="absolute -top-6 -right-6 w-24 h-24 border-t-2 border-r-2 border-brand-accent/30 rounded-tr-3xl"></div>
@@ -78,12 +76,12 @@ const TitleSlide: React.FC<{ slideNum?: number; total?: number }> = () => {
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-end gap-6 font-mono text-sm">
-          <div className="flex items-center gap-3 text-slate-300 hover:text-brand-accent transition-colors cursor-pointer">
+          <div className="flex items-center gap-3 text-slate-300 hover:text-brand-accent transition-colors cursor-pointer text-sm">
             <Globe size={16} className="text-brand-accent" />
             <span>GHOST-OS-X.AI</span>
           </div>
           <div className="hidden md:block w-px h-4 bg-white/10"></div>
-          <div className="flex items-center gap-3 text-slate-300 hover:text-brand-purple transition-colors cursor-pointer">
+          <div className="flex items-center gap-3 text-slate-300 hover:text-brand-purple transition-colors cursor-pointer text-sm">
             <Mail size={16} className="text-brand-purple" />
             <span>david@hunter-llc.dev</span>
           </div>

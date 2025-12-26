@@ -1,71 +1,95 @@
 import React from 'react';
 import SlideLayout from '../SlideLayout';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-import { ASK_ALLOCATION } from '../../constants';
-import { TrendingUp, Users, Rocket } from 'lucide-react';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { Target, Users, TrendingUp } from 'lucide-react';
+
+const DATA = [
+  { name: 'Engineering', value: 40 },
+  { name: 'AI Infrastructure', value: 30 },
+  { name: 'Growth', value: 20 },
+  { name: 'Ops', value: 10 },
+];
+
+const COLORS = ['#00f2ff', '#8b5cf6', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.1)'];
 
 const AskSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, total }) => {
   return (
-    <SlideLayout title="Capital Requirement" subtitle="Pre-Seed Allocation" slideNumber={slideNum} totalSlides={total}>
-      <div className="flex flex-col items-center justify-center h-full">
-         
-         <div className="flex flex-col md:flex-row gap-12 items-center w-full max-w-5xl">
-             
-             {/* Left: The Number */}
-             <div className="w-full md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
-                  <div className="text-[10px] font-mono text-brand-accent uppercase tracking-[0.2em] mb-2">Total Request</div>
-                  <h2 className="text-8xl md:text-9xl font-black text-white tracking-tighter leading-none mb-4">$1M</h2>
-                  <div className="px-4 py-1 bg-white text-black font-bold font-mono text-sm uppercase">Pre-Seed Round</div>
-             </div>
+    <SlideLayout title="The Ask" subtitle="Investing in Ghost.OS.X" slideNumber={slideNum} totalSlides={total}>
+      <div className="flex flex-col h-full justify-center">
 
-             {/* Middle: Chart */}
-             <div className="w-full md:w-1/3 h-[250px] relative">
-                  <ResponsiveContainer width="100%" height="100%">
-                     <PieChart>
-                        <Pie
-                          data={ASK_ALLOCATION}
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={60}
-                          outerRadius={80}
-                          paddingAngle={5}
-                          dataKey="value"
-                          stroke="none"
-                        >
-                          {ASK_ALLOCATION.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={index === 0 ? '#00ff00' : index === 1 ? '#ffffff' : '#333333'} />
-                          ))}
-                        </Pie>
-                        <Tooltip contentStyle={{backgroundColor: '#000', borderColor: '#333'}} />
-                     </PieChart>
-                  </ResponsiveContainer>
-                  {/* Chart Center Label */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-                      <div className="text-xs font-mono text-slate-500">USE OF</div>
-                      <div className="text-white font-bold">FUNDS</div>
-                  </div>
-             </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
 
-             {/* Right: Milestones */}
-             <div className="w-full md:w-1/3 space-y-6">
-                 <div className="border-l-2 border-brand-accent pl-4">
-                     <div className="text-xs font-mono text-slate-500 mb-1">TARGET 01</div>
-                     <div className="text-white font-bold text-xl">2,500 Users</div>
-                     <div className="text-slate-400 text-sm">Paying Customer Base</div>
-                 </div>
-                 <div className="border-l-2 border-white pl-4">
-                     <div className="text-xs font-mono text-slate-500 mb-1">TARGET 02</div>
-                     <div className="text-white font-bold text-xl">$250k ARR</div>
-                     <div className="text-slate-400 text-sm">Run Rate</div>
-                 </div>
-                 <div className="border-l-2 border-slate-700 pl-4">
-                     <div className="text-xs font-mono text-slate-500 mb-1">TARGET 03</div>
-                     <div className="text-white font-bold text-xl">Series A</div>
-                     <div className="text-slate-400 text-sm">Ready by Q4 2026</div>
-                 </div>
-             </div>
+          {/* Round Summary */}
+          <div className="flex flex-col gap-6">
+            <div className="space-y-2">
+              <span className="text-brand-accent font-mono text-xs uppercase tracking-[0.3em]">Pre-Seed Round</span>
+              <h2 className="text-8xl font-black text-white tracking-tighter">$1M</h2>
+              <p className="text-slate-400 text-lg font-light leading-relaxed">Raising capital to accelerate the singularity of software development.</p>
+            </div>
 
-         </div>
+            <div className="bg-white/5 border border-white/10 p-6 rounded-3xl space-y-4">
+              <div className="flex items-center gap-3">
+                <Target className="text-brand-accent" size={20} />
+                <span className="text-white font-medium text-sm">6-Month Runway</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Users className="text-brand-purple" size={20} />
+                <span className="text-white font-medium text-sm">3 Senior AI Engineers</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Allocation Chart */}
+          <div className="h-[400px] relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-[40px] p-8">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={DATA}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={80}
+                  outerRadius={120}
+                  paddingAngle={8}
+                  dataKey="value"
+                  stroke="none"
+                >
+                  {DATA.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Allocation</div>
+              <div className="text-2xl font-bold text-white uppercase tracking-tight">Focus</div>
+            </div>
+          </div>
+
+          {/* Use of Funds Table */}
+          <div className="space-y-6">
+            {DATA.map((item, i) => (
+              <div key={i} className="flex items-center justify-between group">
+                <div className="flex items-center gap-4">
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[i] }}></div>
+                  <span className="text-white font-bold tracking-tight group-hover:text-brand-accent transition-colors">{item.name}</span>
+                </div>
+                <span className="text-slate-500 font-mono text-sm">{item.value}%</span>
+              </div>
+            ))}
+
+            <div className="mt-12 pt-12 border-t border-white/5 flex flex-col gap-4">
+              <div className="flex items-center gap-3 text-slate-400 text-sm">
+                <TrendingUp size={16} className="text-brand-accent" />
+                <span>Projection: 5,000 MAU by Q3</span>
+              </div>
+              <div className="flex items-center gap-3 text-slate-400 text-sm">
+                <TrendingUp size={16} className="text-brand-purple" />
+                <span>Revenue Target: $1M ARR by EoY</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </SlideLayout>

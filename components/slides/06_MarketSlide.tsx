@@ -1,61 +1,69 @@
 import React from 'react';
 import SlideLayout from '../SlideLayout';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
-import { MARKET_DATA } from '../../constants';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, LabelList } from 'recharts';
+
+const MARKET_DATA = [
+  { name: 'SOM', value: 2, desc: '$2B AI No-Code Builders' },
+  { name: 'SAM', value: 45, desc: '$45B AI-Enhanced Tools' },
+  { name: 'TAM', value: 500, desc: '$500B Global App Market' },
+];
 
 const MarketSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, total }) => {
   return (
-    <SlideLayout title="Market Analysis" subtitle="Opportunity Vector" slideNumber={slideNum} totalSlides={total}>
-      <div className="flex flex-col md:flex-row gap-12 h-full">
-        
-        {/* Chart Section */}
-        <div className="w-full md:w-1/2 flex flex-col border border-slate-800 bg-black/40 p-6 relative">
-             <div className="absolute top-0 right-0 p-2 text-[10px] font-mono text-brand-accent">FIG_01: TAM_GROWTH</div>
-             
-             <div className="flex-1 w-full min-h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={MARKET_DATA} margin={{ top: 40, right: 30, left: 20, bottom: 5 }}>
-                    <XAxis dataKey="name" stroke="#64748b" tick={{ fill: '#94a3b8', fontFamily: 'monospace' }} axisLine={{ stroke: '#334155' }} tickLine={false} />
-                    <YAxis stroke="#64748b" tickFormatter={(value) => `${value}B`} tick={{ fill: '#94a3b8', fontFamily: 'monospace' }} axisLine={false} tickLine={false} />
-                    <Bar dataKey="value">
-                      {MARKET_DATA.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={index === 0 ? '#00ff00' : index === 1 ? '#ffffff' : '#333333'} />
-                      ))}
-                      <LabelList dataKey="value" position="top" formatter={(val: number) => `$${val}B`} fill="#fff" fontSize={14} fontFamily="monospace" offset={10} />
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-             </div>
+    <SlideLayout title="Market Opportunity" subtitle="Capitalizing on the AI Shift" slideNumber={slideNum} totalSlides={total}>
+      <div className="flex flex-col md:flex-row gap-16 h-full items-center">
 
-             <div className="flex justify-between mt-4 text-[10px] font-mono text-slate-500 uppercase">
-                {MARKET_DATA.map((d, i) => (
-                   <div key={i} className="flex items-center gap-2">
-                      <div className="w-2 h-2" style={{backgroundColor: i === 0 ? '#00ff00' : i === 1 ? '#ffffff' : '#333333'}}></div>
-                      <span>{d.name}</span>
-                   </div>
-                ))}
-             </div>
+        {/* Chart Section */}
+        <div className="flex-1 w-full h-[400px] bg-black/40 backdrop-blur-xl border border-white/10 p-8 rounded-3xl relative">
+          <div className="absolute top-4 right-8 text-[10px] font-mono text-brand-accent uppercase tracking-widest opacity-50">Market // TAM_VECTOR</div>
+
+          <div className="h-full w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={MARKET_DATA} margin={{ top: 60, right: 30, left: 20, bottom: 20 }}>
+                <XAxis dataKey="name" stroke="#475569" tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 'bold' }} axisLine={false} tickLine={false} />
+                <YAxis hide />
+                <Bar dataKey="value" radius={[12, 12, 12, 12]} barSize={80}>
+                  {MARKET_DATA.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={index === 2 ? '#00f2ff' : index === 1 ? '#8b5cf6' : 'rgba(255,255,255,0.1)'}
+                      className="transition-all duration-500 hover:opacity-80"
+                    />
+                  ))}
+                  <LabelList
+                    dataKey="value"
+                    position="top"
+                    formatter={(val: number) => `$${val}B`}
+                    fill="#fff"
+                    fontSize={20}
+                    fontWeight="bold"
+                    offset={15}
+                  />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         {/* Text Data Stream */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center space-y-6">
-           <div className="space-y-1">
-               <div className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-1">/// DRIVER 01</div>
-               <h3 className="text-xl font-bold text-white">Post-ChatGPT Expectation</h3>
-               <p className="text-slate-400 font-light border-l-2 border-slate-700 pl-4">Users now demand autonomous execution, not just chat interfaces.</p>
-           </div>
-           
-           <div className="space-y-1">
-               <div className="text-[10px] font-mono text-white uppercase tracking-widest mb-1">/// DRIVER 02</div>
-               <h3 className="text-xl font-bold text-white">Resource Scarcity</h3>
-               <p className="text-slate-400 font-light border-l-2 border-slate-700 pl-4">1M+ unfilled developer roles create a critical bottleneck for innovation.</p>
-           </div>
+        <div className="flex-1 flex flex-col justify-center space-y-10">
+          <div className="space-y-4 group">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-8 bg-brand-accent"></div>
+              <div className="text-[10px] font-mono text-brand-accent uppercase tracking-[0.3em]">The Opportunity</div>
+            </div>
+            <h3 className="text-3xl font-bold text-white group-hover:text-brand-accent transition-colors">$500B Serviceable Market</h3>
+            <p className="text-slate-400 text-lg leading-relaxed font-light">The global software application market is ready for a fundamental paradigm shift from legacy coding to AI-native generation.</p>
+          </div>
 
-           <div className="space-y-1">
-               <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1">/// DRIVER 03</div>
-               <h3 className="text-xl font-bold text-white">Enterprise Shift</h3>
-               <p className="text-slate-400 font-light border-l-2 border-slate-700 pl-4">Gartner projects 70% of new enterprise applications will use low-code by 2027.</p>
-           </div>
+          <div className="space-y-4 group">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-8 bg-brand-purple"></div>
+              <div className="text-[10px] font-mono text-brand-purple uppercase tracking-[0.3em]">The Friction</div>
+            </div>
+            <h3 className="text-3xl font-bold text-white group-hover:text-brand-purple transition-colors 80% SMB Market Gap">80% SMB Market Gap</h3>
+            <p className="text-slate-400 text-lg leading-relaxed font-light">Small and medium businesses are locked out of custom software due to cost and complexity. Ghost.OS.X eliminates these barriers.</p>
+          </div>
         </div>
 
       </div>

@@ -1,56 +1,73 @@
 import React from 'react';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, Globe, ExternalLink } from 'lucide-react';
 import AnimatedLogo from '../AnimatedLogo';
 
 const ClosingSlide: React.FC<{ slideNum?: number; total?: number }> = () => {
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center text-center relative overflow-hidden bg-black font-sans">
+    <div className="h-full w-full flex flex-col items-center justify-center text-center relative overflow-hidden bg-transparent font-sans">
 
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      {/* Background Grok Visual */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/grok_image_xzmfm0.jpg"
+          alt="The Future"
+          className="w-full h-full object-cover opacity-[0.03] mix-blend-luminosity"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+      </div>
 
-      <div className="z-10 max-w-2xl px-8 relative">
+      {/* Background Glows */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-accent/5 to-transparent"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-purple/5 rounded-full blur-[120px]"></div>
 
-        {/* Logo Block */}
-        <div className="mb-12">
-          <AnimatedLogo className="h-24 mx-auto" cycleDuration={4000} />
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-brand-accent to-transparent opacity-50 mt-8"></div>
-        </div>
+      <div className="z-10 max-w-3xl px-8 relative">
 
-        <h2 className="text-4xl md:text-5xl font-light text-white mb-12 flex flex-col md:block items-center gap-4">
-          <span>Let's glitch the <span className="font-bold text-brand-accent animate-pulse">matrix</span>...</span>
-          <span className="inline-block md:ml-5 transform -rotate-12 mt-4 md:mt-0 origin-center">
-            <span className="border-4 border-double border-brand-accent/70 text-brand-accent/90 text-sm md:text-xl font-mono font-black px-4 py-1 tracking-[0.2em] uppercase bg-black/80 shadow-[0_0_20px_rgba(0,255,0,0.15)] hover:scale-110 transition-transform cursor-default select-none backdrop-blur-sm">
-              TOGETHER
-            </span>
-          </span>
+
+        <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+          The <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">Future</span> of Creation.
         </h2>
 
+        <p className="text-xl md:text-2xl text-slate-400 font-light mb-16 tracking-wide">
+          <span className="text-white font-semibold">Ghost.OS.X</span> // The Singular Path from Idea to Reality
+        </p>
+
         {/* Contact Module */}
-        <div className="border border-slate-800 bg-black/80 p-8 backdrop-blur relative group hover:border-brand-accent/50 transition-colors">
-          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-brand-accent"></div>
-          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-brand-accent"></div>
-          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-brand-accent"></div>
-          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-brand-accent"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl hover:border-brand-accent/50 transition-all group">
+            <h3 className="text-white font-bold text-2xl tracking-tight mb-4 flex items-center gap-3">
+              David Hunter Jr.
+            </h3>
+            <p className="text-brand-accent/70 text-xs font-mono uppercase tracking-widest mb-6 border-l border-brand-accent/30 pl-3">Founder & CEO</p>
 
-          <h3 className="text-white font-bold text-2xl tracking-wide mb-4">David Hunter Jr.</h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-slate-300 hover:text-brand-accent transition-colors cursor-pointer text-sm font-mono">
+                <Mail size={16} className="text-brand-accent" />
+                <span>david@hunter-llc.dev</span>
+              </div>
+              <div className="flex items-center gap-3 text-slate-300 hover:text-brand-purple transition-colors cursor-pointer text-sm font-mono">
+                <Globe size={16} className="text-brand-purple" />
+                <span>Ghost-OS-X.ai</span>
+              </div>
+            </div>
+          </div>
 
-          <div className="flex flex-col gap-3 items-center text-slate-300 font-mono text-sm">
-            <div className="flex items-center gap-2 hover:text-brand-accent transition-colors cursor-pointer">
-              <Mail size={16} />
-              <span>david@hunter-llc.dev</span>
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl hover:border-brand-purple/50 transition-all flex flex-col justify-center gap-6">
+            <div className="space-y-1">
+              <span className="text-[10px] text-slate-500 uppercase tracking-widest block font-mono">Headquarters</span>
+              <p className="text-white font-medium">Remote First / AI Native</p>
             </div>
-            <div className="flex items-center gap-2">
-              <Phone size={16} />
-              <span>507-321-9421</span>
-              <span className="text-slate-700">|</span>
-              <span>315-503-8372</span>
-            </div>
+
+            <button className="w-full py-4 bg-white text-black font-bold rounded-2xl flex items-center justify-center gap-2 hover:bg-brand-accent hover:text-black transition-all group">
+              INITIALIZE_PARTNERSHIP
+              <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </button>
           </div>
         </div>
 
-        <div className="mt-12 text-[10px] font-mono text-slate-600 uppercase tracking-[0.3em]">
-          End of Transmission // Q4 2025
+        <div className="mt-16 text-[10px] font-mono text-slate-600 uppercase tracking-[0.5em] flex items-center justify-center gap-4">
+          <div className="w-8 h-px bg-slate-800"></div>
+          <span>Ghost.OS.X // Q1 2026</span>
+          <div className="w-8 h-px bg-slate-800"></div>
         </div>
       </div>
     </div>

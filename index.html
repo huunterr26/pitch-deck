@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>vAi™ Investor Pitch Deck</title>
+  <title>Ghost.OS.X Investor Pitch Deck</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,12 +129,95 @@
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: 500ms;
     }
+
+    @keyframes slide-down {
+      0% {
+        transform: translateY(-100%);
+      }
+
+      100% {
+        transform: translateY(500%);
+      }
+    }
+
+    /* Animated Tagline Styles - Horizontal Header */
+    .tagline-container {
+      position: fixed;
+      top: 1rem;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 6rem;
+      align-items: center;
+      z-index: 60;
+      pointer-events: none;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+    }
+
+    .tagline-word {
+      opacity: 0;
+      animation: tagline-reveal 6s infinite;
+      color: white;
+      text-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
+      white-space: nowrap;
+    }
+
+    .word-build {
+      font-size: 4.5rem;
+      font-weight: 900;
+      animation-delay: 0s;
+    }
+
+    .word-faster {
+      font-size: 3rem;
+      font-weight: 700;
+      animation-delay: 2s;
+    }
+
+    .word-smarter {
+      font-size: 1.8rem;
+      font-weight: 400;
+      animation-delay: 4s;
+    }
+
+    @keyframes tagline-reveal {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(15px);
+      }
+
+      10%,
+      40% {
+        opacity: 0.4;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      45% {
+        opacity: 0;
+        transform: translateY(-20px);
+        filter: blur(15px);
+      }
+    }
   </style>
 </head>
 
 <body>
   <div id="root"></div>
   <div class="bg-noise"></div>
+
+  <div class="tagline-container">
+    <span class="tagline-word word-build">Build .</span>
+    <span class="tagline-word word-faster">Faster .</span>
+    <span class="tagline-word word-smarter">Smarter .</span>
+  </div>
+
   <script type="module" src="/index.tsx"></script>
 </body>
 

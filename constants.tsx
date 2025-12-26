@@ -1,5 +1,5 @@
 import { ChartDataPoint, Competitor } from './types';
-import { Layers, Shield, Eye, CreditCard, Cpu, Users, Globe, Briefcase } from 'lucide-react';
+import { Layers, Shield, Eye, CreditCard, Cpu, Users, Globe, Briefcase, RefreshCcw } from 'lucide-react';
 
 export const MARKET_DATA: ChartDataPoint[] = [
   { name: 'SOM', value: 2, description: '$2B AI No-Code Builders', fill: '#00ff00' }, // Terminal Green
@@ -15,17 +15,15 @@ export const ASK_ALLOCATION: ChartDataPoint[] = [
 ];
 
 export const COMPETITORS: Competitor[] = [
-  { name: 'Replit', multiAgent: true, security: false, visibility: false, pricing: '$25/mo' },
-  { name: 'Bolt.new', multiAgent: false, security: false, visibility: false, pricing: 'Token' },
-  { name: 'Lovable', multiAgent: false, security: false, visibility: false, pricing: 'Credit' },
-  { name: 'Cursor', multiAgent: false, security: false, visibility: false, pricing: '$20/mo' },
-  { name: 'vAi™', multiAgent: true, security: true, visibility: true, pricing: '$39/mo' },
+  { name: 'Replit', multiAgent: true, security: true, visibility: false, pricing: '$25/mo' },
+  { name: 'Bolt.new', multiAgent: false, security: true, visibility: false, pricing: '$20/mo' },
+  { name: 'Lovable', multiAgent: false, security: false, visibility: false, pricing: '$25/mo' },
+  { name: 'Cursor', multiAgent: true, security: false, visibility: false, pricing: '$20/mo' },
+  { name: 'Ghost.OS.X', multiAgent: true, security: true, visibility: true, pricing: '$49/mo' },
 ];
 
-export const AGENTS = [
-  { name: 'Bear', role: 'Orchestrator', icon: <Cpu className="w-4 h-4" /> },
-  { name: 'Overseer', role: 'Gatekeeper', icon: <Eye className="w-4 h-4" /> },
-  { name: 'Karen', role: 'Architect', icon: <Layers className="w-4 h-4" /> },
-  { name: 'DeX', role: 'Builder', icon: <Cpu className="w-4 h-4" /> },
-  { name: 'Shadow', role: 'Security', icon: <Shield className="w-4 h-4" /> },
+export const GHOST_SYSTEM = [
+  { name: 'Ghost', role: 'Unified Intelligence', icon: <Cpu className="w-4 h-4" /> },
+  { name: 'Registry', role: 'Task Autonomy', icon: <Users className="w-4 h-4" /> },
+  { name: 'Heal', role: 'Self-Correction', icon: <RefreshCcw className="w-4 h-4" /> },
 ];

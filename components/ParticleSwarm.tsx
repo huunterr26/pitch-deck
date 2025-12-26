@@ -15,8 +15,8 @@ const ParticleSwarm: React.FC = () => {
     canvas.height = height;
 
     const particles: Particle[] = [];
-    const particleCount = width < 768 ? 50 : 100;
-    const mouseDistance = 80; // Range for lasers - decreased from 150 to require closer proximity
+    const particleCount = width < 768 ? 40 : 80;
+    const mouseDistance = 120;
 
     let mouse = { x: -1000, y: -1000 };
 
@@ -28,23 +28,25 @@ const ParticleSwarm: React.FC = () => {
       size: number;
       color: string;
       baseColor: string;
+      glowColor: string;
 
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.2; 
-        this.vy = (Math.random() - 0.5) * 0.2;
+        this.vx = (Math.random() - 0.5) * 0.15;
+        this.vy = (Math.random() - 0.5) * 0.15;
         this.size = Math.random() * 2 + 0.5;
-        
-        // Theme colors - Terminal Green & White
+
         const rand = Math.random();
-        if (rand > 0.90) {
-             this.baseColor = 'rgba(255, 255, 255, 0.9)'; // Brighter White
-             this.size += 1;
-        } else if (rand > 0.60) {
-             this.baseColor = 'rgba(0, 255, 0, 0.9)'; // Brighter Green
+        if (rand > 0.7) {
+          this.baseColor = 'rgba(0, 242, 255, 0.4)'; // Cyan
+          this.glowColor = '#00f2ff';
+        } else if (rand > 0.4) {
+          this.baseColor = 'rgba(139, 92, 246, 0.4)'; // Purple
+          this.glowColor = '#8b5cf6';
         } else {
-             this.baseColor = 'rgba(0, 255, 0, 0.5)'; // Dim Green
+          this.baseColor = 'rgba(255, 255, 255, 0.3)'; // White
+          this.glowColor = '#ffffff';
         }
         this.color = this.baseColor;
       }
@@ -56,86 +58,61 @@ const ParticleSwarm: React.FC = () => {
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
 
-        // Mild attraction to keep them interesting around the cursor
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < mouseDistance) {
-           const forceDirectionX = dx / dist;
-           const forceDirectionY = dy / dist;
-           const force = (mouseDistance - dist) / mouseDistance;
-           
-           this.vx += forceDirectionX * force * 0.01;
-           this.vy += forceDirectionY * force * 0.01;
-           
-           // Cap speed
-           const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-           if (speed > 1.5) {
-               this.vx = (this.vx / speed) * 1.5;
-               this.vy = (this.vy / speed) * 1.5;
-           }
+          const forceDirectionX = dx / dist;
+          const forceDirectionY = dy / dist;
+          const force = (mouseDistance - dist) / mouseDistance;
+
+          this.vx += forceDirectionX * force * 0.005;
+          this.vy += forceDirectionY * force * 0.005;
         }
       }
 
       draw() {
         if (!ctx) return;
-        
+
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        // Determine color based on activity
-        let currentColor = this.baseColor;
-        let isActive = false;
-
+        let alpha = 0.4;
         if (dist < mouseDistance) {
-            currentColor = '#00ff00'; // Active bright green
-            isActive = true;
+          alpha = 0.4 + (1 - dist / mouseDistance) * 0.6;
         }
 
-        // Draw particle
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = currentColor;
-        
-        // Add glow to the particle if active
-        if (isActive) {
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = '#00ff00';
-        } else {
-            ctx.shadowBlur = 0;
-        }
-        
-        ctx.fill();
-        ctx.shadowBlur = 0; // Reset shadow for next operations
 
-        // Draw Laser to Mouse
-        if (isActive) {
-            ctx.beginPath();
-            ctx.moveTo(this.x, this.y);
-            ctx.lineTo(mouse.x, mouse.y);
-            
-            // Laser calculation
-            // Use full intensity (1.0) when close, fading out
-            const alpha = (1 - (dist / mouseDistance));
-            
-            ctx.save();
-            
-            // Additive blending makes overlapping lasers SUPER bright
-            ctx.globalCompositeOperation = 'lighter';
-            
-            // Add a glow effect
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#00ff00';
-            
-            // Bright neon green - Pure green
-            ctx.strokeStyle = `rgba(0, 255, 0, ${alpha})`;
-            ctx.lineWidth = 2; 
-            
-            ctx.stroke();
-            ctx.restore();
+        if (dist < mouseDistance) {
+          ctx.shadowBlur = 15 * (1 - dist / mouseDistance);
+          ctx.shadowColor = this.glowColor;
+          ctx.fillStyle = this.glowColor.replace(')', `, ${alpha})`).replace('#', 'rgba('); // Simple hack for demo, better to use RGB
+        } else {
+          ctx.shadowBlur = 0;
+          ctx.fillStyle = this.baseColor;
         }
+
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Subtle connections
+        particles.forEach(p2 => {
+          const dx2 = this.x - p2.x;
+          const dy2 = this.y - p2.y;
+          const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+          if (dist2 < 100) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(139, 92, 246, ${0.1 * (1 - dist2 / 100)})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        });
       }
     }
 
@@ -148,7 +125,6 @@ const ParticleSwarm: React.FC = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
-
       particles.forEach(p => {
         p.update();
         p.draw();
@@ -168,13 +144,13 @@ const ParticleSwarm: React.FC = () => {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
     };
-    
+
     const handleMouseLeave = () => {
-        mouse.x = -1000;
-        mouse.y = -1000;
+      mouse.x = -1000;
+      mouse.y = -1000;
     }
 
     window.addEventListener('resize', handleResize);
@@ -188,7 +164,7 @@ const ParticleSwarm: React.FC = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-80" />;
+  return <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-60" />;
 };
 
 export default ParticleSwarm;

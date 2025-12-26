@@ -1,60 +1,80 @@
 import React from 'react';
 import SlideLayout from '../SlideLayout';
-import { CheckSquare, Circle } from 'lucide-react';
+import { Circle, ArrowUpRight, TrendingUp } from 'lucide-react';
 
 const TractionSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, total }) => {
+  const milestones = [
+    { q: 'Q1 2026', title: 'Private Beta', status: 'Upcoming', desc: 'Onboarding first 100 waitlist developers.' },
+    { q: 'Q2 2026', title: 'Public Alpha', status: 'Planned', desc: 'Self-serve access for validated builders.' },
+    { q: 'Q3 2026', title: 'Scale & API', status: 'Planned', desc: 'Enterprise hub and ecosystem launch.' },
+    { q: 'Q4 2026', title: 'Global Edge', status: 'Planned', desc: 'Decentralized deployment optimization.' },
+  ];
+
+  const markers = [
+    { label: "Waitlist Size", value: "5k+" },
+    { label: "Core Engine", value: "98%" },
+    { label: "Infrastructure Readiness", value: "94.2%" }
+  ];
+
   return (
-    <SlideLayout title="Execution Log" subtitle="Status & Roadmap" slideNumber={slideNum} totalSlides={total}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 h-full">
-        
-        {/* Status Panel */}
-        <div className="border border-brand-accent/30 bg-black/40 p-6 flex flex-col">
-            <h3 className="text-brand-accent font-mono text-sm uppercase tracking-widest mb-6 border-b border-brand-accent/20 pb-2">
-                /// SYSTEM STATUS: ONLINE
-            </h3>
-            <div className="space-y-4 font-mono text-sm">
-                {[
-                  "Core A2A Agent System [ACTIVE]",
-                  "15 Specialized Agents [INTEGRATED]",
-                  "Billing Infrastructure [STRIPE_READY]",
-                  "Auth & User Systems [DEPLOYED]",
-                  "Collaboration Engine [REALTIME]"
-                ].map((item, i) => (
-                   <div key={i} className="flex items-center gap-3 text-white">
-                       <CheckSquare size={16} className="text-brand-accent" />
-                       {item}
-                   </div>
-                ))}
+    <SlideLayout title="Traction & Roadmap" subtitle="The Ghost Momentum" slideNumber={slideNum} totalSlides={total}>
+      <div className="flex flex-col h-full gap-8">
+
+        {/* Core Stats */}
+        <div className="grid grid-cols-3 gap-6">
+          {markers.map((m, i) => (
+            <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-3xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                <TrendingUp size={60} className="text-brand-accent" />
+              </div>
+              <div className="text-[10px] text-slate-500 font-mono uppercase tracking-[0.2em] mb-2">{m.label}</div>
+              <div className="text-4xl font-bold text-white group-hover:text-brand-accent transition-colors">{m.value}</div>
             </div>
-            
-            <div className="mt-auto p-4 bg-brand-accent/10 border border-brand-accent/20 text-xs text-brand-accent font-mono text-center">
-                ALL SYSTEMS OPERATIONAL
-            </div>
+          ))}
         </div>
 
-        {/* Roadmap Timeline */}
-        <div className="relative pl-8 border-l border-slate-800">
-            <h3 className="text-white font-mono text-sm uppercase tracking-widest mb-8 absolute -left-[11px] top-0 bg-black px-2 py-1 border border-slate-700">
-                TIMELINE
-            </h3>
-            
-            <div className="space-y-10 mt-12">
-               {[
-                 { q: 'Q1 2026', title: 'Private Beta', sub: 'DATA_GATHERING' },
-                 { q: 'Q2 2026', title: 'Public Launch', sub: 'PRODUCT_HUNT' },
-                 { q: 'Q3 2026', title: 'Enterprise', sub: 'REVENUE_SCALE' },
-                 { q: 'Q4 2026', title: 'Series A', sub: 'EXPANSION' },
-               ].map((m, i) => (
-                  <div key={i} className="relative group">
-                      <div className="absolute -left-[41px] top-1 w-4 h-4 bg-black border-2 border-slate-600 group-hover:border-brand-accent transition-colors"></div>
-                      <div className="flex flex-col">
-                          <span className="text-brand-accent font-mono text-xs">{m.q}</span>
-                          <span className="text-white font-bold text-lg">{m.title}</span>
-                          <span className="text-slate-500 text-xs font-mono uppercase">{m.sub}</span>
-                      </div>
+        {/* Timeline Visual */}
+        <div className="flex-1 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-10 relative overflow-hidden">
+
+          <div className="flex justify-between items-start relative z-10 h-full">
+            {milestones.map((m, i) => (
+              <div key={i} className="flex flex-col gap-6 relative w-1/4 group">
+
+                {/* Timeline Node */}
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-500 ${m.status === 'Upcoming' ? 'bg-brand-accent/20 border-brand-accent shadow-[0_0_20px_#00f2ff]' : 'bg-white/5 border-white/10'
+                    }`}>
+                    {m.status === 'Upcoming' ? <ArrowUpRight className="text-brand-accent" size={24} /> : <Circle className="text-slate-600" size={16} />}
                   </div>
-               ))}
-            </div>
+                  <div className="flex flex-col">
+                    <span className={`text-xs font-mono font-bold ${m.status === 'Upcoming' ? 'text-brand-accent' : 'text-slate-500'}`}>{m.q}</span>
+                    <span className="text-white font-bold">{m.status}</span>
+                  </div>
+                </div>
+
+                {/* Content Card */}
+                <div className={`p-6 rounded-2xl border transition-all duration-500 h-full ${m.status === 'Upcoming' ? 'bg-white/5 border-brand-accent/30' : 'bg-transparent border-transparent'
+                  }`}>
+                  <h4 className="text-xl font-bold text-white mb-2">{m.title}</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">{m.desc}</p>
+                </div>
+
+                {/* Connecting Line (except last) */}
+                {i < milestones.length - 1 && (
+                  <div className="absolute top-6 left-12 w-full h-[1px] bg-gradient-to-r from-brand-accent/50 to-transparent -z-10"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="flex items-center justify-between text-[10px] font-mono text-slate-600 uppercase tracking-[0.4em]">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 bg-brand-accent rounded-full animate-pulse"></div>
+            <span>Pre-Seed Round Active</span>
+          </div>
+          <span>On Track for Q1 Beta</span>
         </div>
 
       </div>

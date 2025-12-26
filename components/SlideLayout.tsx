@@ -13,35 +13,37 @@ const SlideLayout: React.FC<SlideLayoutProps> = ({ title, subtitle, children, sl
   return (
     <div className="h-full w-full flex flex-col p-6 md:p-10 relative overflow-hidden bg-transparent text-white font-sans selection:bg-brand-accent/30">
 
-      {/* Background Grid & decorative elements */}
+      {/* Background - Premium Ethereal Feel */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Subtle Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        {/* Subtle Glows */}
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-brand-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-brand-purple/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2"></div>
 
-        {/* Corner Brackets */}
-        <div className="absolute top-8 left-8 w-8 h-8 border-t border-l border-brand-accent/50"></div>
-        <div className="absolute top-8 right-8 w-8 h-8 border-t border-r border-brand-accent/50"></div>
-        <div className="absolute bottom-8 left-8 w-8 h-8 border-b border-l border-brand-accent/50"></div>
-        <div className="absolute bottom-8 right-8 w-8 h-8 border-b border-r border-brand-accent/50"></div>
+        {/* Clean Decorative Brackets */}
+        <div className="absolute top-8 left-8 w-6 h-6 border-t border-l border-white/10 rounded-tl-xl transition-all hover:border-brand-accent/40"></div>
+        <div className="absolute top-8 right-8 w-6 h-6 border-t border-r border-white/10 rounded-tr-xl"></div>
+        <div className="absolute bottom-8 left-8 w-6 h-6 border-b border-l border-white/10 rounded-bl-xl"></div>
+        <div className="absolute bottom-8 right-8 w-6 h-6 border-b border-r border-white/10 rounded-br-xl"></div>
       </div>
 
-      {/* Logo - Top Center */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 opacity-80 hover:opacity-100 transition-opacity">
-        <AnimatedLogo className="h-10 md:h-12 w-auto" cycleDuration={4000} />
+
+      {/* Logo Placeholder - Top Right */}
+      <div className="absolute top-8 right-12 z-20 opacity-40 hover:opacity-100 transition-all scale-75 md:scale-90">
+        <AnimatedLogo className="h-8 md:h-10 w-auto" />
       </div>
 
-      {/* Top Technical Header */}
-      <div className="flex justify-between items-end border-b border-brand-accent/30 pb-4 mb-6 z-10 shrink-0">
+      {/* Header Section */}
+      <div className="flex justify-between items-end border-b border-white/10 pb-6 mb-8 z-10 shrink-0">
         <div className="flex flex-col">
-          <span className="text-[10px] text-slate-500 font-mono tracking-[0.2em] uppercase mb-1">Module {slideNumber < 10 ? `0${slideNumber}` : slideNumber}</span>
-          <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-white uppercase leading-none">
+          <span className="text-[10px] text-slate-500 font-mono tracking-[0.3em] uppercase mb-2">Section {slideNumber < 10 ? `0${slideNumber}` : slideNumber}</span>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-none">
             {title}
           </h1>
         </div>
         <div className="flex flex-col items-end">
           {subtitle && (
-            <div className="flex items-center gap-2 text-brand-accent font-mono text-xs md:text-sm tracking-widest bg-brand-accent/10 px-3 py-1 rounded-sm border border-brand-accent/20">
-              <span className="w-1.5 h-1.5 bg-brand-accent rounded-full animate-pulse"></span>
+            <div className="flex items-center gap-3 text-brand-accent font-mono text-xs md:text-sm tracking-[0.15em] bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
+              <span>GHOST-OS-X.AI</span>
               {subtitle.toUpperCase()}
             </div>
           )}

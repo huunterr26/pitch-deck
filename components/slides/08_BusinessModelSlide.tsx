@@ -8,27 +8,27 @@ const BusinessModelSlide: React.FC<{ slideNum: number; total: number }> = ({ sli
             name: 'Free',
             price: '$0',
             icon: <Zap className="text-slate-500" size={24} />,
-            features: ['3 Active Projects', 'Ghost Standard Model', 'Community Support'],
+            features: ['3 Active Projects', 'GHOST Standard Model', 'Community Support'],
             highlight: false
         },
         {
             name: 'Pro',
             price: '$49',
             icon: <Rocket className="text-brand-accent" size={24} />,
-            features: ['Unlimited Projects', 'Ghost Ultra Model', 'Code Export (Docker)', 'Priority Generation'],
+            features: ['Unlimited Projects', 'GHOST Ultra Model', 'Code Export (Docker)', 'Priority Generation'],
             highlight: true
         },
         {
             name: 'Enterprise',
             price: 'Custom',
             icon: <Building2 className="text-brand-purple" size={24} />,
-            features: ['VPC Deployment', 'Custom Model Tuning', 'SSO & IAM Control', 'Dedicated Ghost Engineer'],
+            features: ['VPC Deployment', 'Custom Model Tuning', 'SSO & IAM Control', 'Dedicated GHOST Engineer'],
             highlight: false
         },
     ];
 
     return (
-        <SlideLayout title="Business Model" subtitle="Scaling with Ghost.OS.X" slideNumber={slideNum} totalSlides={total}>
+        <SlideLayout title="Business Model" subtitle="Scaling with GHOST.OS.X" slideNumber={slideNum} totalSlides={total}>
             <div className="flex flex-col h-full justify-center gap-12">
 
                 {/* Pricing Grid */}
@@ -76,7 +76,7 @@ const BusinessModelSlide: React.FC<{ slideNum: number; total: number }> = ({ sli
                     <div className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.4em]">Scaling Vectors</div>
                     <div className="flex gap-8">
                         <span className="text-white text-xs font-mono border-b border-brand-accent/30 pb-1">Token-based Overage</span>
-                        <span className="text-white text-xs font-mono border-b border-brand-purple/30 pb-1">Ghost Marketplace</span>
+                        <span className="text-white text-xs font-mono border-b border-brand-purple/30 pb-1">GHOST Marketplace</span>
                         <span className="text-white text-xs font-mono border-b border-brand-accent/30 pb-1">Enterprise Advisory</span>
                     </div>
                 </div>

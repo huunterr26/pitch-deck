@@ -17,7 +17,7 @@ const TractionSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum
   ];
 
   return (
-    <SlideLayout title="Traction & Roadmap" subtitle="The Ghost Momentum" slideNumber={slideNum} totalSlides={total}>
+    <SlideLayout title="Traction & Roadmap" subtitle="The GHOST Momentum" slideNumber={slideNum} totalSlides={total}>
       <div className="flex flex-col h-full gap-8">
 
         {/* Core Stats */}

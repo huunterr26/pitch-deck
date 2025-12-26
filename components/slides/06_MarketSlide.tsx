@@ -62,7 +62,7 @@ const MarketSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, 
               <div className="text-[10px] font-mono text-brand-purple uppercase tracking-[0.3em]">The Friction</div>
             </div>
             <h3 className="text-3xl font-bold text-white group-hover:text-brand-purple transition-colors 80% SMB Market Gap">80% SMB Market Gap</h3>
-            <p className="text-slate-400 text-lg leading-relaxed font-light">Small and medium businesses are locked out of custom software due to cost and complexity. Ghost.OS.X eliminates these barriers.</p>
+            <p className="text-slate-400 text-lg leading-relaxed font-light">Small and medium businesses are locked out of custom software due to cost and complexity. GHOST.OS.X eliminates these barriers.</p>
           </div>
         </div>
 

@@ -7,11 +7,11 @@ const HowItWorksSlide: React.FC<{ slideNum: number; total: number }> = ({ slideN
     {
       icon: <Search className="w-6 h-6 text-brand-accent" />,
       label: "User Specification",
-      desc: "Ghost captures intent"
+      desc: "GHOST captures intent"
     },
     {
       icon: <Cpu className="w-6 h-6 text-brand-purple" />,
-      label: "Ghost Intelligence",
+      label: "GHOST Intelligence",
       desc: "Single-agent orchestration"
     },
     {
@@ -39,7 +39,7 @@ const HowItWorksSlide: React.FC<{ slideNum: number; total: number }> = ({ slideN
   ];
 
   return (
-    <SlideLayout title="How It Works" subtitle="Ghost: The Unified Intelligence" slideNumber={slideNum} totalSlides={total}>
+    <SlideLayout title="How It Works" subtitle="GHOST: The Unified Intelligence" slideNumber={slideNum} totalSlides={total}>
       <div className="flex flex-col h-full gap-8">
 
         {/* Top: The Pipeline */}
@@ -90,7 +90,7 @@ const HowItWorksSlide: React.FC<{ slideNum: number; total: number }> = ({ slideN
             </div>
           </div>
 
-          {/* Ghost Intelligent System */}
+          {/* GHOST Intelligent System */}
           <div className="bg-brand-purple/5 border border-brand-purple/20 p-6 rounded-3xl relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/10 to-transparent"></div>
             <div className="flex items-center gap-3 mb-6 relative z-10">
@@ -123,7 +123,7 @@ const HowItWorksSlide: React.FC<{ slideNum: number; total: number }> = ({ slideN
 
         {/* Closing Stat */}
         <div className="text-center font-mono text-[10px] text-slate-600 tracking-[0.5em] uppercase">
-          Ghost.OS.X // The Singular Path from Idea to Reality
+          GHOST.OS.X // The Singular Path from Idea to Reality
         </div>
 
       </div>

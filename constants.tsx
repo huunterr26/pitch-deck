@@ -19,11 +19,11 @@ export const COMPETITORS: Competitor[] = [
   { name: 'Bolt.new', multiAgent: false, security: true, visibility: false, pricing: '$20/mo' },
   { name: 'Lovable', multiAgent: false, security: false, visibility: false, pricing: '$25/mo' },
   { name: 'Cursor', multiAgent: true, security: false, visibility: false, pricing: '$20/mo' },
-  { name: 'Ghost.OS.X', multiAgent: true, security: true, visibility: true, pricing: '$49/mo' },
+  { name: 'GHOST.OS.X', multiAgent: true, security: true, visibility: true, pricing: '$49/mo' },
 ];
 
 export const GHOST_SYSTEM = [
-  { name: 'Ghost', role: 'Unified Intelligence', icon: <Cpu className="w-4 h-4" /> },
+  { name: 'GHOST', role: 'Unified Intelligence', icon: <Cpu className="w-4 h-4" /> },
   { name: 'Registry', role: 'Task Autonomy', icon: <Users className="w-4 h-4" /> },
   { name: 'Heal', role: 'Self-Correction', icon: <RefreshCcw className="w-4 h-4" /> },
 ];

@@ -5,7 +5,7 @@ import { COMPETITORS } from '../../constants';
 
 const CompetitionSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, total }) => {
   return (
-    <SlideLayout title="Competitive Matrix" subtitle="The Ghost Advantage" slideNumber={slideNum} totalSlides={total}>
+    <SlideLayout title="Competitive Matrix" subtitle="The GHOST Advantage" slideNumber={slideNum} totalSlides={total}>
       <div className="w-full h-full flex flex-col">
 
         {/* Matrix Table */}
@@ -21,7 +21,7 @@ const CompetitionSlide: React.FC<{ slideNum: number; total: number }> = ({ slide
 
           {/* Rows */}
           {COMPETITORS.map((comp, i) => {
-            const isGhost = comp.name === 'Ghost.OS.X';
+            const isGhost = comp.name === 'GHOST.OS.X';
             return (
               <div key={i} className={`grid grid-cols-5 gap-4 p-6 items-center border-b border-white/5 last:border-0 ${isGhost ? 'bg-brand-accent/5 relative overflow-hidden' : ''}`}>
                 {isGhost && <div className="absolute left-0 top-0 bottom-0 w-1 bg-brand-accent shadow-[0_0_10px_#00f2ff]"></div>}
@@ -56,7 +56,7 @@ const CompetitionSlide: React.FC<{ slideNum: number; total: number }> = ({ slide
             </div>
             <div>
               <h4 className="text-brand-accent font-bold text-sm uppercase mb-2 tracking-widest">Singularity Engine</h4>
-              <p className="text-slate-400 text-sm leading-relaxed">Ghost handles the entire pipeline as a unified intelligence, eliminating the coordination lag of traditional multi-agent systems.</p>
+              <p className="text-slate-400 text-sm leading-relaxed">GHOST handles the entire pipeline as a unified intelligence, eliminating the coordination lag of traditional multi-agent systems.</p>
             </div>
           </div>
           <div className="bg-white/5 border border-white/10 p-6 rounded-3xl flex gap-6 items-start hover:border-brand-purple/30 transition-all group">

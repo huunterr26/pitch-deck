@@ -14,7 +14,7 @@ const COLORS = ['#00f2ff', '#8b5cf6', 'rgba(255,255,255,0.4)', 'rgba(255,255,255
 
 const AskSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, total }) => {
   return (
-    <SlideLayout title="The Ask" subtitle="Investing in Ghost.OS.X" slideNumber={slideNum} totalSlides={total}>
+    <SlideLayout title="The Ask" subtitle="Investing in GHOST.OS.X" slideNumber={slideNum} totalSlides={total}>
       <div className="flex flex-col h-full justify-center">
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">

@@ -40,7 +40,7 @@ const SolutionSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum
           <div className="mb-6">
             <h3 className="text-3xl font-bold text-white mb-4">AI-Native Application Builder</h3>
             <p className="text-slate-400 text-lg leading-relaxed">
-              We've eliminated the gap between imagination and deployment. Tell Ghost what you want, and watch it build.
+              We've eliminated the gap between imagination and deployment. Tell GHOST what you want, and watch it build.
             </p>
           </div>
 
@@ -85,7 +85,7 @@ const SolutionSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum
 
             <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl group/img">
               <img
-                src="/ghost-session-active.png"
+                src="/Recording 2025-12-26 125958.gif"
                 alt="Ghost Session Active"
                 className="w-full h-auto object-cover opacity-90 group-hover/img:opacity-100 transition-opacity"
               />

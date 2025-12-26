@@ -31,7 +31,7 @@ const TeamSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, to
                             <div className="space-y-2 text-sm text-slate-300 font-mono">
                                 <div className="flex items-center gap-2 justify-center md:justify-start">
                                     <span className="text-slate-500">[ROLE]</span>
-                                    <span>Full Stack Developer (Self-Taught)</span>
+                                    <span>Full Stack Developer (Independent)</span>
                                 </div>
                                 <div className="flex items-center gap-2 justify-center md:justify-start">
                                     <span className="text-slate-500">[EXP]</span>
@@ -39,7 +39,7 @@ const TeamSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, to
                                 </div>
                                 <div className="flex items-center gap-2 justify-center md:justify-start">
                                     <span className="text-slate-500">[ACH]</span>
-                                    <span>Solo-built Ghost Core Engine</span>
+                                    <span>Solo-built GHOST Core Engine</span>
                                 </div>
                             </div>
 

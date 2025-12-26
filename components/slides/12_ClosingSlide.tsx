@@ -28,7 +28,7 @@ const ClosingSlide: React.FC<{ slideNum?: number; total?: number }> = () => {
         </h2>
 
         <p className="text-xl md:text-2xl text-slate-400 font-light mb-16 tracking-wide">
-          <span className="text-white font-semibold">Ghost.OS.X</span> // The Singular Path from Idea to Reality
+          <span className="text-white font-semibold">GHOST.OS.X</span> // The Singular Path from Idea to Reality
         </p>
 
         {/* Contact Module */}
@@ -66,7 +66,7 @@ const ClosingSlide: React.FC<{ slideNum?: number; total?: number }> = () => {
 
         <div className="mt-16 text-[10px] font-mono text-slate-600 uppercase tracking-[0.5em] flex items-center justify-center gap-4">
           <div className="w-8 h-px bg-slate-800"></div>
-          <span>Ghost.OS.X // Q1 2026</span>
+          <span>GHOST.OS.X // Q1 2026</span>
           <div className="w-8 h-px bg-slate-800"></div>
         </div>
       </div>

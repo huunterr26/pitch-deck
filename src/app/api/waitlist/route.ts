@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
     try {
@@ -14,10 +16,13 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // Get Supabase client (lazy-initialized)
+        const supabase = getSupabase();
+
         // Check if Supabase is configured
-        if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+        if (!supabase) {
             // Development mode - just log the email
-            console.log(`[Waitlist] Email submitted: ${email}`);
+            console.log(`[Waitlist] Email submitted (dev mode): ${email}`);
             return NextResponse.json({
                 success: true,
                 message: "You're on the list! We'll notify you when we launch.",

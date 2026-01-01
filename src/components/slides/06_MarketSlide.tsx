@@ -35,7 +35,7 @@ const MarketSlide: React.FC<{ slideNum: number; total: number }> = ({ slideNum, 
                   <LabelList
                     dataKey="value"
                     position="top"
-                    formatter={(val: number) => `$${val}B`}
+                    formatter={(val) => `$${val}B`}
                     fill="#fff"
                     fontSize={20}
                     fontWeight="bold"

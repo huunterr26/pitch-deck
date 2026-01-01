@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-accent: #00f2ff;
+  --brand-accent-rgb: 0, 242, 255;
+  --brand-purple: #8b5cf6;
+  --brand-purple-rgb: 139, 92, 246;
+}
+
+html,
+body {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000000;
+  color: #e5e7eb;
+  font-family: "Rajdhani", sans-serif;
+}
+
+/* 4K Grain Texture */
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.neon-text-green {
+  text-shadow: 0 0 5px rgba(var(--brand-accent-rgb), 0.5),
+    0 0 20px rgba(var(--brand-accent-rgb), 0.3);
+}
+
+/* High Fidelity Glass Effect */
+.glass-panel {
+  background: rgba(20, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--brand-accent-rgb), 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+/* 3D Card Effect */
+.glass-3d {
+  background: linear-gradient(135deg, #050505 0%, #000000 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(var(--brand-accent-rgb), 0.2);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9),
+    inset 0 0 0 1px rgba(var(--brand-accent-rgb), 0.05);
+  transform-style: preserve-3d;
+  transition: all 0.3s ease-out;
+}
+
+.glass-3d:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 30px 60px -12px rgba(var(--brand-accent-rgb), 0.1),
+    inset 0 0 0 1px rgba(var(--brand-accent-rgb), 0.3);
+  border-color: rgba(var(--brand-accent-rgb), 0.6);
+}
+
+/* Typewriter Utilities */
+.typewriter-text {
+  overflow: hidden;
+  border-right: 0.15em solid var(--brand-accent);
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Smooth color transitions */
+* {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Animated Tagline - Horizontal Header */
+.tagline-container {
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  align-items: center;
+  z-index: 60;
+  pointer-events: none;
+  font-family: "Rajdhani", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.tagline-word {
+  opacity: 0;
+  animation: tagline-reveal 6s infinite;
+  color: white;
+  text-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
+  white-space: nowrap;
+}
+
+.word-build {
+  font-size: 4.5rem;
+  font-weight: 900;
+  animation-delay: 0s;
+}
+
+.word-faster {
+  font-size: 3rem;
+  font-weight: 700;
+  animation-delay: 2s;
+}
+
+.word-smarter {
+  font-size: 1.8rem;
+  font-weight: 400;
+  animation-delay: 4s;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: var(--brand-accent);
+  }
+}
+
+@keyframes tagline-reveal {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(15px);
+  }
+
+  10%,
+  40% {
+    opacity: 0.4;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  45% {
+    opacity: 0;
+    transform: translateY(-20px);
+    filter: blur(15px);
+  }
+}
+
+@keyframes staggerWord {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(10px);
+  }
+
+  15%,
+  50% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+
+  65%,
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(500%);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 255, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 242, 255, 0.5);
+}
